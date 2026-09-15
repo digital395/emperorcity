@@ -15,6 +15,14 @@ import { motion } from "framer-motion";
 
 const amenities = [
   {
+    title: "Grand Clubhouse",
+    icon: Building2,
+  },
+  {
+    title: "Swimming Pool",
+    icon: Waves,
+  },
+  {
     title: "Blacktop Roads",
     icon: Route,
   },
@@ -37,14 +45,6 @@ const amenities = [
   {
     title: "Avenue Trees",
     icon: Trees,
-  },
-  {
-    title: "Grand Clubhouse",
-    icon: Building2,
-  },
-  {
-    title: "Swimming Pool",
-    icon: Waves,
   },
 ];
 
