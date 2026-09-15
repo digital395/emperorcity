@@ -73,7 +73,7 @@ export default function Hero() {
   return (
     <section className="relative w-full overflow-hidden">
       <Image
-        src="/hero.jpeg"
+        src="/images/hero1.webp"
         alt="Premium plots in Tirunelveli"
         width={1567}
         height={869}
@@ -105,7 +105,7 @@ export default function Hero() {
               Premium plots with clubhouse
             </motion.p>
 
-            <motion.div
+            {/* <motion.div
               variants={itemVariants}
               className="hidden sm:mt-6 sm:flex sm:flex-nowrap sm:items-center sm:justify-start"
             >
@@ -220,10 +220,10 @@ export default function Hero() {
                   </p>
                 </div>
               </motion.div>
-            </motion.div>
+            </motion.div> */}
           </motion.div>
 
-          <motion.div
+          {/* <motion.div
             variants={formVariants}
             initial="hidden"
             animate="visible"
@@ -266,7 +266,7 @@ export default function Hero() {
                 <span className="h-1.5 w-1.5 rounded-full bg-[#D4AF37]" />
               </div>
             </div>
-          </motion.div>
+          </motion.div> */}
         </div>
       </div>
     </section>
