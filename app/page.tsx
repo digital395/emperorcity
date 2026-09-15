@@ -14,10 +14,10 @@ export default function Home() {
     <main>
       <FloatingEnquiry />
       <section id="hero">
-      <Hero />
+        <Hero />
       </section>
       <section id="about">
-      <About />
+        <About />
       </section>
       <section id="project">
         <Project />
@@ -35,7 +35,7 @@ export default function Home() {
         <LocationConnectivity />
       </section>
       <section id="investment">
-        <Investment  />
+        <Investment />
       </section>
       <section id="contact">
         <Contact />

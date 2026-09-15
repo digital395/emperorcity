@@ -19,21 +19,21 @@ export const siteMetadata = {
     follow: true,
   },
 
-openGraph: {
-  title: "Emperor City | Premium Residential Plots",
-  description:
-    "Premium residential plots with clubhouse facilities and modern amenities. Your dream plot starts here.",
-  type: "website",
-  siteName: "Emperor City",
-  images: [
-    {
-      url: "/images/hero.jpeg",
-      width: 1200,
-      height: 630,
-      alt: "Emperor City Premium Residential Plots",
-    },
-  ],
-},
+  openGraph: {
+    title: "Emperor City | Premium Residential Plots",
+    description:
+      "Premium residential plots with clubhouse facilities and modern amenities. Your dream plot starts here.",
+    type: "website",
+    siteName: "Emperor City",
+    images: [
+      {
+        url: "/images/hero.jpeg",
+        width: 1200,
+        height: 630,
+        alt: "Emperor City Premium Residential Plots",
+      },
+    ],
+  },
 
   twitter: {
     card: "summary_large_image",

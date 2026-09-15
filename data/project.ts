@@ -8,8 +8,7 @@ export const highlights = [
   {
     number: "02",
     title: "₹9.50 Lakhs Onwards*",
-    description:
-      "Premium plots designed to suit different budgets.",
+    description: "Premium plots designed to suit different budgets.",
   },
   {
     number: "03",

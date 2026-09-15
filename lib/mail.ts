@@ -22,9 +22,12 @@ export async function sendGoogleLeadMail(data: LeadMailPayload) {
 
     const mailOptions = {
       from: `"Emperor City Landing Page Leads" <${process.env.EMAIL_USER}>`,
-      to: ["antony@happyhomes.org.in", "clientservicing@blackcoffeebrands.co.in"],
+      to: [
+        "antony@happyhomes.org.in",
+        "clientservicing@blackcoffeebrands.co.in",
+      ],
       subject: "New Google Lead - Emperor City",
-  html: `
+      html: `
     <h2>New Lead Received</h2>
 
     <table border="1" cellpadding="8" cellspacing="0" style="border-collapse:collapse;">

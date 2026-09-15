@@ -54,7 +54,6 @@ const fadeRight = {
 export default function ProjectIntroduction() {
   return (
     <section className="relative w-full overflow-hidden bg-[#FBFAF7]">
-
       <motion.div
         initial={{
           opacity: 0,
@@ -72,17 +71,7 @@ export default function ProjectIntroduction() {
           duration: 1.5,
           ease: easeInOut,
         }}
-        className="
-          pointer-events-none
-          absolute
-          -left-32
-          top-20
-          h-95
-          w-95
-          rounded-full
-          bg-[#D4AF37]/4.5
-          blur-[100px]
-        "
+        className="pointer-events-none absolute top-20 -left-32 h-95 w-95 rounded-full bg-[#D4AF37]/4.5 blur-[100px]"
       />
 
       <motion.div
@@ -103,41 +92,11 @@ export default function ProjectIntroduction() {
           delay: 0.2,
           ease: easeInOut,
         }}
-        className="
-          pointer-events-none
-          absolute
-          -right-32
-          bottom-10
-          h-105
-          w-105
-          rounded-full
-          bg-[#541215]/[0.035]
-          blur-[110px]
-        "
+        className="pointer-events-none absolute -right-32 bottom-10 h-105 w-105 rounded-full bg-[#541215]/[0.035] blur-[110px]"
       />
 
-      <div
-        className="
-          relative
-          mx-auto
-          w-full
-          max-w-7xl
-          px-3
-          py-16
-        "
-      >
-      
-        <div
-          className="
-            grid
-            grid-cols-1
-            gap-2
-            md:grid-cols-[180px_1fr]
-            md:gap-10
-            lg:grid-cols-[200px_1fr]
-          "
-        >
-        
+      <div className="relative mx-auto w-full max-w-7xl px-3 py-16">
+        <div className="grid grid-cols-1 gap-2 md:grid-cols-[180px_1fr] md:gap-10 lg:grid-cols-[200px_1fr]">
           <motion.div
             variants={fadeLeft}
             initial="hidden"
@@ -165,17 +124,7 @@ export default function ProjectIntroduction() {
               className="mt-0.75 w-0.5 rounded-full bg-[#D4AF37]"
             />
 
-            <p
-              className="
-                font-[Poppins]
-                text-[10px]
-                font-semibold
-                uppercase
-                tracking-[0.16em]
-                text-[#541215]/70
-                sm:text-[11px]
-              "
-            >
+            <p className="font-[Poppins] text-[10px] font-semibold tracking-[0.16em] text-[#541215]/70 uppercase sm:text-[11px]">
               PROJECT INTRODUCTION
             </p>
           </motion.div>
@@ -189,21 +138,10 @@ export default function ProjectIntroduction() {
                 once: true,
                 amount: 0.4,
               }}
-              className="
-                max-w-250
-                font-[Marcellus]
-                text-[40px]
-                leading-[1.08]
-                tracking-[-0.015em]
-                text-[#541215]
-                sm:text-[48px]
-                md:text-[52px]
-              "
+              className="max-w-250 font-[Marcellus] text-[40px] leading-[1.08] tracking-[-0.015em] text-[#541215] sm:text-[48px] md:text-[52px]"
             >
               A BIGGER SPACE{" "}
-              <span className="text-[#711717]">
-                FOR A BIGGER FUTURE.
-              </span>
+              <span className="text-[#711717]">FOR A BIGGER FUTURE.</span>
             </motion.h2>
 
             <motion.div
@@ -266,20 +204,7 @@ export default function ProjectIntroduction() {
           </div>
         </div>
 
-        <div
-          className="
-            mt-12
-            grid
-            grid-cols-1
-            gap-12
-            md:mt-16
-            md:grid-cols-[350px_1fr]
-            md:gap-12
-            lg:grid-cols-[400px_1fr]
-            lg:gap-20
-          "
-        >
-
+        <div className="mt-12 grid grid-cols-1 gap-12 md:mt-16 md:grid-cols-[350px_1fr] md:gap-12 lg:grid-cols-[400px_1fr] lg:gap-20">
           <motion.div
             variants={fadeLeft}
             initial="hidden"
@@ -290,7 +215,6 @@ export default function ProjectIntroduction() {
             }}
             className="relative"
           >
-
             <motion.div
               initial={{
                 opacity: 0,
@@ -311,16 +235,7 @@ export default function ProjectIntroduction() {
                 delay: 0.25,
                 ease: easeInOut,
               }}
-              className="
-                absolute
-                -bottom-3
-                -right-3
-                h-full
-                w-full
-                rounded-3xl
-                border
-                border-[#D4AF37]/35
-              "
+              className="absolute -right-3 -bottom-3 h-full w-full rounded-3xl border border-[#D4AF37]/35"
             />
 
             <motion.div
@@ -331,18 +246,7 @@ export default function ProjectIntroduction() {
                 duration: 0.8,
                 ease: easeInOut,
               }}
-              className="
-                relative
-                h-92.5
-                w-full
-                overflow-hidden
-                rounded-[22px]
-                bg-[#541215]
-                shadow-[0_20px_55px_rgba(43,9,11,0.14)]
-                sm:h-107.5
-                md:h-115
-                lg:h-125
-              "
+              className="relative h-92.5 w-full overflow-hidden rounded-[22px] bg-[#541215] shadow-[0_20px_55px_rgba(43,9,11,0.14)] sm:h-107.5 md:h-115 lg:h-125"
             >
               <motion.div
                 initial={{
@@ -412,23 +316,10 @@ export default function ProjectIntroduction() {
                   className="mb-3 h-px bg-[#D4AF37]"
                 />
 
-                <p
-                  className="
-                    font-[Poppins]
-                    text-[12px]
-                    font-medium
-                    uppercase
-                    leading-normal
-                    tracking-[0.12em]
-                    text-white
-                    sm:text-[13px]
-                  "
-                >
+                <p className="font-[Poppins] text-[12px] leading-normal font-medium tracking-[0.12em] text-white uppercase sm:text-[13px]">
                   EMPEROR CITY
                   <br />
-                  <span className="text-[#F1D77A]">
-                    TIRUNELVELI
-                  </span>
+                  <span className="text-[#F1D77A]">TIRUNELVELI</span>
                 </p>
               </motion.div>
             </motion.div>
@@ -444,7 +335,6 @@ export default function ProjectIntroduction() {
             }}
             className="w-full"
           >
-
             <div className="max-w-200">
               <motion.p
                 initial={{
@@ -463,21 +353,13 @@ export default function ProjectIntroduction() {
                   duration: 0.8,
                   ease: easeInOut,
                 }}
-                className="
-                  font-[Poppins]
-                  text-[13px]
-                  font-normal
-                  leading-[1.9]
-                  text-[#555]
-                  sm:text-[14px]
-                  lg:text-[15px]
-                "
+                className="font-[Poppins] text-[13px] leading-[1.9] font-normal text-[#555] sm:text-[14px] lg:text-[15px]"
               >
                 Emperor City is a thoughtfully planned 70-acre integrated
-                township at VM Chatram, Palayamkottai, Tirunelveli. With
-                premium residential plots, villas, apartments and commercial
-                spaces, it brings everything you need for a well-connected and
-                future-ready community.
+                township at VM Chatram, Palayamkottai, Tirunelveli. With premium
+                residential plots, villas, apartments and commercial spaces, it
+                brings everything you need for a well-connected and future-ready
+                community.
               </motion.p>
 
               <motion.p
@@ -498,16 +380,7 @@ export default function ProjectIntroduction() {
                   delay: 0.15,
                   ease: easeInOut,
                 }}
-                className="
-                  mt-5
-                  font-[Poppins]
-                  text-[13px]
-                  font-normal
-                  leading-[1.9]
-                  text-[#555]
-                  sm:text-[14px]
-                  lg:text-[15px]
-                "
+                className="mt-5 font-[Poppins] text-[13px] leading-[1.9] font-normal text-[#555] sm:text-[14px] lg:text-[15px]"
               >
                 Whether you are planning your dream home or looking for a
                 promising investment, Emperor City gives you the space to build
@@ -553,17 +426,7 @@ export default function ProjectIntroduction() {
                   className="h-px bg-[#D4AF37]"
                 />
 
-                <p
-                  className="
-                    font-[Poppins]
-                    text-[10px]
-                    font-semibold
-                    uppercase
-                    tracking-[0.16em]
-                    text-[#541215]/70
-                    sm:text-[11px]
-                  "
-                >
+                <p className="font-[Poppins] text-[10px] font-semibold tracking-[0.16em] text-[#541215]/70 uppercase sm:text-[11px]">
                   KEY HIGHLIGHTS
                 </p>
               </div>
@@ -585,16 +448,7 @@ export default function ProjectIntroduction() {
                   delay: 0.1,
                   ease: easeInOut,
                 }}
-                className="
-                  mt-3
-                  max-w-162.5
-                  font-[Marcellus]
-                  text-[30px]
-                  leading-[1.15]
-                  text-[#541215]
-                  sm:text-[34px]
-                  md:text-[38px]
-                "
+                className="mt-3 max-w-162.5 font-[Marcellus] text-[30px] leading-[1.15] text-[#541215] sm:text-[34px] md:text-[38px]"
               >
                 WHAT MAKES EMPEROR CITY SPECIAL
               </motion.h3>
@@ -618,16 +472,7 @@ export default function ProjectIntroduction() {
                 delay: 0.2,
                 ease: easeInOut,
               }}
-              className="
-                mt-7
-                overflow-hidden
-                rounded-[18px]
-                border
-                border-[#541215]/8
-                bg-white/80
-                shadow-[0_12px_40px_rgba(43,9,11,0.05)]
-                sm:mt-8
-              "
+              className="mt-7 overflow-hidden rounded-[18px] border border-[#541215]/8 bg-white/80 shadow-[0_12px_40px_rgba(43,9,11,0.05)] sm:mt-8"
             >
               {highlights.map((highlight, index) => (
                 <motion.div
@@ -652,26 +497,8 @@ export default function ProjectIntroduction() {
                   whileHover={{
                     backgroundColor: "rgba(84,18,21,0.025)",
                   }}
-                  className="
-                    group
-                    grid
-                    grid-cols-[42px_1fr]
-                    gap-3
-                    border-b
-                    border-[#541215]/8
-                    px-4
-                    py-5
-                    last:border-b-0
-                    sm:grid-cols-[50px_1fr]
-                    sm:gap-4
-                    sm:px-5
-                    sm:py-6
-                    md:grid-cols-[55px_190px_1fr]
-                    md:gap-5
-                    md:px-6
-                  "
+                  className="group grid grid-cols-[42px_1fr] gap-3 border-b border-[#541215]/8 px-4 py-5 last:border-b-0 sm:grid-cols-[50px_1fr] sm:gap-4 sm:px-5 sm:py-6 md:grid-cols-[55px_190px_1fr] md:gap-5 md:px-6"
                 >
-
                   <div className="flex items-start pt-0.5">
                     <motion.span
                       whileHover={{
@@ -682,14 +509,7 @@ export default function ProjectIntroduction() {
                         duration: 0.4,
                         ease: easeInOut,
                       }}
-                      className="
-                        font-[Marcellus]
-                        text-[20px]
-                        leading-none
-                        text-[#D4AF37]
-                        sm:text-[23px]
-                        md:text-[24px]
-                      "
+                      className="font-[Marcellus] text-[20px] leading-none text-[#D4AF37] sm:text-[23px] md:text-[24px]"
                     >
                       {highlight.number}
                     </motion.span>
@@ -704,46 +524,18 @@ export default function ProjectIntroduction() {
                         duration: 0.4,
                         ease: easeInOut,
                       }}
-                      className="
-                        font-[Poppins]
-                        text-[12px]
-                        font-semibold
-                        leading-[1.45]
-                        text-[#2B090B]
-                        sm:text-[13px]
-                        md:text-[14px]
-                      "
+                      className="font-[Poppins] text-[12px] leading-[1.45] font-semibold text-[#2B090B] sm:text-[13px] md:text-[14px]"
                     >
                       {highlight.title}
                     </motion.h4>
 
-                    <p
-                      className="
-                        mt-1.5
-                        font-[Poppins]
-                        text-[10px]
-                        font-normal
-                        leading-[1.65]
-                        text-[#777]
-                        sm:text-[11px]
-                        md:hidden
-                      "
-                    >
+                    <p className="mt-1.5 font-[Poppins] text-[10px] leading-[1.65] font-normal text-[#777] sm:text-[11px] md:hidden">
                       {highlight.description}
                     </p>
                   </div>
 
                   <div className="hidden md:block">
-                    <p
-                      className="
-                        font-[Poppins]
-                        text-[11px]
-                        font-normal
-                        leading-[1.7]
-                        text-[#777]
-                        lg:text-[12px]
-                      "
-                    >
+                    <p className="font-[Poppins] text-[11px] leading-[1.7] font-normal text-[#777] lg:text-[12px]">
                       {highlight.description}
                     </p>
                   </div>

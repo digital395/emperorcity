@@ -81,11 +81,7 @@ const itemVariants = {
   }),
 };
 
-function AmenityRow({
-  items,
-}: {
-  items: typeof amenities;
-}) {
+function AmenityRow({ items }: { items: typeof amenities }) {
   return (
     <motion.div
       variants={rowVariants}
@@ -95,24 +91,7 @@ function AmenityRow({
         once: true,
         amount: 0.25,
       }}
-      className="
-        grid
-        w-full
-        grid-cols-2
-        overflow-hidden
-        rounded-2xl
-        border
-        border-[#541215]/8
-        bg-[#FBFAF7]/70
-        px-1
-        py-1
-        shadow-[0_8px_30px_rgba(43,9,11,0.035)]
-        sm:px-2
-        sm:py-2
-        lg:flex
-        lg:items-center
-        lg:justify-center
-      "
+      className="grid w-full grid-cols-2 overflow-hidden rounded-2xl border border-[#541215]/8 bg-[#FBFAF7]/70 px-1 py-1 shadow-[0_8px_30px_rgba(43,9,11,0.035)] sm:px-2 sm:py-2 lg:flex lg:items-center lg:justify-center"
     >
       {items.map((amenity, index) => {
         const Icon = amenity.icon;
@@ -128,25 +107,7 @@ function AmenityRow({
               once: true,
               amount: 0.4,
             }}
-            className="
-              group
-              flex
-              min-h-18
-              items-center
-              border-b
-              border-[#541215]/8
-              px-2
-              py-2
-              last:border-b-0
-              sm:min-h-19
-              sm:px-3
-              lg:h-16
-              lg:min-h-0
-              lg:flex-1
-              lg:border-b-0
-              lg:px-0
-              lg:py-0
-            "
+            className="group flex min-h-18 items-center border-b border-[#541215]/8 px-2 py-2 last:border-b-0 sm:min-h-19 sm:px-3 lg:h-16 lg:min-h-0 lg:flex-1 lg:border-b-0 lg:px-0 lg:py-0"
           >
             <motion.div
               whileHover={{
@@ -156,20 +117,8 @@ function AmenityRow({
                 duration: 0.5,
                 ease: easeInOut,
               }}
-              className="
-                flex
-                w-full
-                items-center
-                gap-2.5
-                px-2
-                sm:gap-3
-                sm:px-3
-                lg:gap-4
-                lg:px-5
-                xl:px-7
-              "
+              className="flex w-full items-center gap-2.5 px-2 sm:gap-3 sm:px-3 lg:gap-4 lg:px-5 xl:px-7"
             >
-
               <motion.div
                 whileHover={{
                   scale: 1.12,
@@ -179,29 +128,12 @@ function AmenityRow({
                   duration: 0.5,
                   ease: easeInOut,
                 }}
-                className="
-                  flex
-                  h-9
-                  w-9
-                  shrink-0
-                  items-center
-                  justify-center
-                  rounded-full
-                  border
-                  border-[#D4AF37]/30
-                  bg-[#541215]/4
-                  text-[#541215]
-                  sm:h-10
-                  sm:w-10
-                "
+                className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[#D4AF37]/30 bg-[#541215]/4 text-[#541215] sm:h-10 sm:w-10"
               >
                 <Icon
                   size={17}
                   strokeWidth={1.7}
-                  className="
-                    sm:h-4.75
-                    sm:w-4.75
-                  "
+                  className="sm:h-4.75 sm:w-4.75"
                 />
               </motion.div>
 
@@ -213,18 +145,7 @@ function AmenityRow({
                   duration: 0.4,
                   ease: easeInOut,
                 }}
-                className="
-                  whitespace-normal
-                  font-[Poppins]
-                  text-[11px]
-                  font-medium
-                  leading-4
-                  tracking-[0.01em]
-                  text-[#252525]
-                  sm:text-[12px]
-                  lg:whitespace-nowrap
-                  lg:text-[14px]
-                "
+                className="font-[Poppins] text-[11px] leading-4 font-medium tracking-[0.01em] whitespace-normal text-[#252525] sm:text-[12px] lg:text-[14px] lg:whitespace-nowrap"
               >
                 {amenity.title}
               </motion.span>
@@ -248,14 +169,7 @@ function AmenityRow({
                   delay: index * 0.08,
                   ease: easeInOut,
                 }}
-                className="
-                  hidden
-                  h-9.5
-                  w-px
-                  shrink-0
-                  bg-[#541215]/10
-                  lg:block
-                "
+                className="hidden h-9.5 w-px shrink-0 bg-[#541215]/10 lg:block"
               />
             )}
           </motion.div>
@@ -267,19 +181,7 @@ function AmenityRow({
 
 export default function ProjectAmenities() {
   return (
-    <section
-      className="
-        relative
-        w-full
-        overflow-hidden
-        bg-white
-        py-16
-        sm:py-20
-        lg:py-24
-        xl:py-28
-      "
-    >
-     
+    <section className="relative w-full overflow-hidden bg-white py-16 sm:py-20 lg:py-24 xl:py-28">
       <motion.div
         initial={{
           opacity: 0,
@@ -297,17 +199,7 @@ export default function ProjectAmenities() {
           duration: 1.5,
           ease: easeInOut,
         }}
-        className="
-          pointer-events-none
-          absolute
-          -left-40
-          top-20
-          h-80
-          w-80
-          rounded-full
-          bg-[#D4AF37]/[0.035]
-          blur-3xl
-        "
+        className="pointer-events-none absolute top-20 -left-40 h-80 w-80 rounded-full bg-[#D4AF37]/[0.035] blur-3xl"
       />
 
       <motion.div
@@ -328,39 +220,11 @@ export default function ProjectAmenities() {
           delay: 0.2,
           ease: easeInOut,
         }}
-        className="
-          pointer-events-none
-          absolute
-          -right-40
-          bottom-10
-          h-80
-          w-80
-          rounded-full
-          bg-[#541215]/[0.035]
-          blur-3xl
-        "
+        className="pointer-events-none absolute -right-40 bottom-10 h-80 w-80 rounded-full bg-[#541215]/[0.035] blur-3xl"
       />
 
-      <div
-        className="
-          relative
-          mx-auto
-          w-full
-          max-w-330
-          px-2
-        "
-      >
-        
-        <div
-          className="
-            grid
-            grid-cols-1
-            gap-1
-            md:grid-cols-[180px_1fr]
-            lg:grid-cols-[210px_1fr]
-          "
-        >
-         
+      <div className="relative mx-auto w-full max-w-330 px-2">
+        <div className="grid grid-cols-1 gap-1 md:grid-cols-[180px_1fr] lg:grid-cols-[210px_1fr]">
           <motion.div
             initial={{
               opacity: 0,
@@ -398,16 +262,7 @@ export default function ProjectAmenities() {
                 className="h-px bg-[#D4AF37]"
               />
 
-              <p
-                className="
-                  font-[Poppins]
-                  text-[12px]
-                  font-semibold
-                  uppercase
-                  tracking-[0.28em]
-                  text-[#541215]/65
-                "
-              >
+              <p className="font-[Poppins] text-[12px] font-semibold tracking-[0.28em] text-[#541215]/65 uppercase">
                 FEATURES
               </p>
             </div>
@@ -431,22 +286,10 @@ export default function ProjectAmenities() {
                 duration: 1,
                 ease: easeInOut,
               }}
-              className="
-                max-w-full
-                font-[Marcellus]
-                text-[38px]
-                leading-[1.08]
-                tracking-[-0.015em]
-                text-[#541215]
-                sm:text-[46px]
-                md:text-[52px]
-                lg:text-[56px]
-              "
+              className="max-w-full font-[Marcellus] text-[38px] leading-[1.08] tracking-[-0.015em] text-[#541215] sm:text-[46px] md:text-[52px] lg:text-[56px]"
             >
               DESIGNED FOR BETTER{" "}
-              <span className="text-[#711717]">
-                EVERYDAY LIVING
-              </span>
+              <span className="text-[#711717]">EVERYDAY LIVING</span>
             </motion.h2>
 
             <motion.p
@@ -467,19 +310,7 @@ export default function ProjectAmenities() {
                 delay: 0.15,
                 ease: easeInOut,
               }}
-              className="
-                mt-4
-                max-w-180
-                font-[Poppins]
-                text-[12px]
-                font-normal
-                leading-6
-                text-[#541215]/60
-                sm:mt-5
-                sm:text-[13px]
-                sm:leading-7
-                md:text-[14px]
-              "
+              className="mt-4 max-w-180 font-[Poppins] text-[12px] leading-6 font-normal text-[#541215]/60 sm:mt-5 sm:text-[13px] sm:leading-7 md:text-[14px]"
             >
               Everything at Emperor City is planned to make everyday life more
               convenient, secure and comfortable.
@@ -502,13 +333,7 @@ export default function ProjectAmenities() {
                 delay: 0.3,
                 ease: easeInOut,
               }}
-              className="
-                mt-5
-                flex
-                items-center
-                gap-2
-                sm:mt-6
-              "
+              className="mt-5 flex items-center gap-2 sm:mt-6"
             >
               <motion.span
                 initial={{
@@ -531,13 +356,7 @@ export default function ProjectAmenities() {
           </div>
         </div>
 
-        <div
-          className="
-            mt-14
-            space-y-5
-            lg:mt-16
-          "
-        >
+        <div className="mt-14 space-y-5 lg:mt-16">
           <AmenityRow items={amenities.slice(0, 4)} />
           <AmenityRow items={amenities.slice(4, 8)} />
         </div>

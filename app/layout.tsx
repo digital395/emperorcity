@@ -8,15 +8,12 @@ export const metadata: Metadata = siteMetadata;
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html
-      lang="en"
-      className={`h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col">
-        <Navbar/>
+    <html lang="en" className={`h-full antialiased`}>
+      <body className="flex min-h-full flex-col">
+        <Navbar />
         {children}
-        <Footer/>
-        </body>
+        <Footer />
+      </body>
     </html>
   );
 }

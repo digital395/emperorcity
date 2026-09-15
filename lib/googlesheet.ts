@@ -5,7 +5,7 @@ type SheetLeadPayload = {
   formType: string;
   projectName: string;
   leadSource: string;
-  agree:string;
+  agree: string;
 };
 
 export async function sendGoogleLeadToSheet(data: SheetLeadPayload) {

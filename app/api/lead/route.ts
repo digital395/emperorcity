@@ -5,14 +5,7 @@ export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
 
-    const {
-      name,
-      phone,
-      email,
-      agree,
-      formtype,
-      leadSource,
-    } = body;
+    const { name, phone, email, agree, formtype, leadSource } = body;
 
     if (!name || !phone) {
       return NextResponse.json(
@@ -20,7 +13,7 @@ export async function POST(req: NextRequest) {
           success: false,
           message: "Name and Phone are required.",
         },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -30,7 +23,7 @@ export async function POST(req: NextRequest) {
           success: false,
           message: "Invalid name.",
         },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -40,66 +33,56 @@ export async function POST(req: NextRequest) {
           success: false,
           message: "Phone number must contain exactly 10 digits.",
         },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
-    if (
-      email &&
-      !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
-    ) {
+    if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       return NextResponse.json(
         {
           success: false,
           message: "Invalid email address.",
         },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
-        let projectName = "Emperor City_gad";
+    let projectName = "Emperor City_gad";
 
     if (leadSource === "meta") {
       projectName = "Emperor City_meta";
     } else if (leadSource === "google") {
       projectName = "Emperor City_gad";
     } else {
-      projectName = "Emperor City_gad"; 
+      projectName = "Emperor City_gad";
     }
 
+    const sheetResponse = await sendGoogleLeadToSheet({
+      name,
+      phone,
+      email: email || "",
+      formType: formtype,
+      projectName,
+      leadSource,
+      agree: agree ? "Yes" : "No",
+    });
 
+    console.log("Sheet Response:", sheetResponse);
 
-const sheetResponse = await sendGoogleLeadToSheet({
-  name,
-  phone,
-  email: email || "",
-  formType: formtype,
-  projectName,
-  leadSource,
-  agree: agree ? "Yes" : "No",
-});
+    return NextResponse.json(
+      {
+        success: sheetResponse.success,
 
-console.log("Sheet Response:", sheetResponse);
+        message: sheetResponse.success
+          ? "Lead submitted successfully."
+          : "One or more integrations failed.",
 
-return NextResponse.json(
-  {
-    success:
-      sheetResponse.success,
-
-    message:
-      sheetResponse.success
-        ? "Lead submitted successfully."
-        : "One or more integrations failed.",
-
-    sheet: sheetResponse,
-  },
-  {
-    status:
-      sheetResponse.success
-        ? 200
-        : 500,
-  }
-);
+        sheet: sheetResponse,
+      },
+      {
+        status: sheetResponse.success ? 200 : 500,
+      },
+    );
   } catch (error) {
     console.error("Lead API Error:", error);
 
@@ -108,7 +91,7 @@ return NextResponse.json(
         success: false,
         message: "Internal Server Error",
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
