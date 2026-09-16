@@ -115,13 +115,7 @@ export default function About() {
                 src="/images/family.webp"
                 alt="Family"
                 fill
-                priority
-                sizes="
-                (max-width: 640px) 275px,
-                (max-width: 768px) 350px,
-                (max-width: 1024px) 450px,
-                520px
-              "
+                sizes="(max-width: 640px) 275px, (max-width: 768px) 350px, (max-width: 1024px) 450px, 520px"
                 className="object-contain object-bottom"
               />
             </motion.div>
