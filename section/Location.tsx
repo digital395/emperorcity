@@ -233,7 +233,7 @@ export default function LocationConnectivity() {
                       key={index}
                       className="flex items-start gap-3 font-[Poppins] text-[13px] leading-[1.65] text-[#252525] sm:text-[14px]"
                     >
-                      <span className="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-[#541215]" />
+                      <span className="mt-2.25 h-1.5 w-1.5 shrink-0 rounded-full bg-[#541215]" />
 
                       <span>{item}</span>
                     </li>
