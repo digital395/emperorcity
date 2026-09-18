@@ -8,6 +8,7 @@ import Project from "@/section/Project";
 import Investment from "@/section/Investment";
 import LocationConnectivity from "@/section/Location";
 import Explore from "@/section/Explore";
+import TopReason from "@/section/Topreason";
 
 export default function Home() {
   return (
@@ -21,6 +22,9 @@ export default function Home() {
       </section>
       <section id="project">
         <Project />
+      </section>
+      <section id="top-reason">
+        <TopReason />
       </section>
       <section id="amenities">
         <Amenities />

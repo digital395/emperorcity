@@ -1,31 +1,62 @@
 export const highlights = [
   {
     number: "01",
-    title: "70 Acres",
+    title: "Tirunelveli's Biggest Integrated Township",
     description:
-      "A large-scale integrated township designed for community living.",
+      "70 acres of plotted development, commercial spaces, villas, apartments, and residential plots — a true integrated community, not just a layout.",
   },
   {
     number: "02",
-    title: "₹9.50 Lakhs Onwards*",
-    description: "Premium plots designed to suit different budgets.",
+    title: "Only Clubhouse Project in Tirunelveli",
+    description:
+      "Complete with a swimming pool and world-class amenities, unmatched by any other project in the region.",
   },
   {
     number: "03",
-    title: "700 Sq.Ft Onwards*",
+    title: "Next Maharaja Nagar — At One-Third the Price",
     description:
-      "Choose a plot size that gives you the freedom to build the home you want.",
+      "Maharaja Nagar is already commanding 30–35% price appreciation. Emperor City offers the same growth trajectory at a fraction of today's entry cost — early investment, exponential upside.",
   },
   {
     number: "04",
-    title: "Grand Clubhouse",
+    title: "Dedicated Senior Citizens' Park",
     description:
-      "A dedicated space for recreation, relaxation and community experiences.",
+      "The only project in Tirunelveli offering a space designed exclusively for elderly residents to relax and socialize.",
   },
   {
     number: "05",
-    title: "Future-Ready Connectivity",
+    title: "Larger Plots, Limited in Number",
     description:
-      "An upcoming 60-ft internal road planned to connect directly towards KTC Nagar.",
+      "Bigger plot sizes across the same land extent mean fewer total plots — exclusivity built into the very design.",
+  },
+  {
+    number: "06",
+    title: "Unmatched NH-44 Connectivity",
+    description:
+      "Just 1 minute from NH-44 (Chennai–Kanyakumari Highway), with ongoing widening works improving access to Madurai, Trichy, and Chennai. Plus 5 minutes to Shantinagar & Palayamkottai bus stands, 8 minutes to Melapalayam Railway Station, and 20 minutes to the airport.",
+  },
+  {
+    number: "07",
+    title: "Located in an Already-Developed Neighborhood",
+    description:
+      "Reputed institutions like Sri Jayendra Swamigal Silver Jubilee School and St. Antony's Public School are already functioning within minutes — proof of established, livable surroundings.",
+  },
+  {
+    number: "08",
+    title: "Elegant, Wide Road Network",
+    description:
+      "Internal roads ranging from 30 ft to 50 ft give the layout an open, premium look rarely seen in plotted developments.",
+  },
+  {
+    number: "09",
+    title: "100% Legally Fit — Bank Approved, DTCP & RERA Cleared",
+    description:
+      "Approved by major banks for home loans, with full DTCP and RERA approval — complete legal transparency for buyers.",
+  },
+  {
+    number: "10",
+    title: "Future 60 ft Road to KTC Nagar",
+    description:
+      "An upcoming internal 60 ft road will connect directly to KTC Nagar, putting the city center within a minute's reach once opened — a built-in future value trigger.",
   },
 ];
