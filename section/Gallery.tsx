@@ -71,7 +71,7 @@ export default function ProjectVision() {
   return (
     <section
       id="gallery"
-      className="relative w-full overflow-hidden bg-[#FBFAF7] py-20 sm:py-24 lg:py-28 xl:py-32"
+      className="relative w-full overflow-hidden bg-[#FBFAF7] py-20 md:py-24"
     >
       <div className="pointer-events-none absolute top-0 -right-40 h-125 w-125 rounded-full bg-[#D4AF37]/4.5 blur-[140px]" />
 
