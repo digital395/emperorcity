@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 import { highlights } from "@/data/project";
 
 const easeInOut = [0.42, 0, 0.58, 1] as const;
@@ -9,294 +10,295 @@ const easeInOut = [0.42, 0, 0.58, 1] as const;
 const fadeUp = {
   hidden: {
     opacity: 0,
-    y: 40,
+    y: 35,
   },
+
   visible: {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.9,
-      ease: easeInOut,
-    },
-  },
-};
-
-const fadeLeft = {
-  hidden: {
-    opacity: 0,
-    x: -35,
-  },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: {
-      duration: 0.9,
-      ease: easeInOut,
-    },
-  },
-};
-
-const fadeRight = {
-  hidden: {
-    opacity: 0,
-    x: 35,
-  },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: {
-      duration: 0.9,
+      duration: 0.8,
       ease: easeInOut,
     },
   },
 };
 
 export default function TopReason() {
+  const [isMobile, setIsMobile] = useState(false);
+  const [current, setCurrent] = useState(0);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  const visibleCards = isMobile ? 1 : 3;
+
+  const maxIndex = Math.max(highlights.length - visibleCards, 0);
+
+  const next = () => {
+    setCurrent((prev) => (prev >= maxIndex ? 0 : prev + 1));
+  };
+
+  const previous = () => {
+    setCurrent((prev) => (prev <= 0 ? maxIndex : prev - 1));
+  };
+
+  useEffect(() => {
+    setCurrent(0);
+  }, [visibleCards]);
+
+  useEffect(() => {
+    if (maxIndex === 0) return;
+
+    const timer = setInterval(() => {
+      setCurrent((prev) => {
+        return prev >= maxIndex ? 0 : prev + 1;
+      });
+    }, 5000);
+
+    return () => clearInterval(timer);
+  }, [maxIndex]);
+
+  if (!highlights.length) {
+    return null;
+  }
+
   return (
-    <section className="relative w-full overflow-hidden bg-[#FBFAF7]">
-      <motion.div
-        initial={{
-          opacity: 0,
-          scale: 0.8,
-        }}
-        whileInView={{
-          opacity: 1,
-          scale: 1,
-        }}
-        viewport={{
-          once: true,
-          amount: 0.2,
-        }}
-        transition={{
-          duration: 1.5,
-          ease: easeInOut,
-        }}
-        className="pointer-events-none absolute top-20 -left-32 h-95 w-95 rounded-full bg-[#D4AF37]/4.5 blur-[100px]"
-      />
+    <section className="relative w-full overflow-hidden">
+      <div className="pointer-events-none absolute top-20 -left-40 h-100 w-100 rounded-full bg-[#D4AF37]/5 blur-[110px]" />
 
-      <motion.div
-        initial={{
-          opacity: 0,
-          scale: 0.8,
-        }}
-        whileInView={{
-          opacity: 1,
-          scale: 1,
-        }}
-        viewport={{
-          once: true,
-          amount: 0.2,
-        }}
-        transition={{
-          duration: 1.5,
-          delay: 0.2,
-          ease: easeInOut,
-        }}
-        className="pointer-events-none absolute -right-32 bottom-10 h-105 w-105 rounded-full bg-[#541215]/[0.035] blur-[110px]"
-      />
+      <div className="pointer-events-none absolute -right-40 bottom-0 h-112.5 w-112.5 rounded-full bg-[#541215]/[0.035] blur-[120px]" />
 
-      <div className="relative mx-auto w-full max-w-7xl px-3 py-16">
-        <div className="grid grid-cols-1 gap-2 md:grid-cols-[180px_1fr] md:gap-10 lg:grid-cols-[200px_1fr]">
+      <div className="relative mx-auto w-full max-w-360 px-4 py-16 md:px-10 md:pt-5 md:pb-0">
+        <div className="text-center">
           <motion.div
-            variants={fadeLeft}
+            variants={fadeUp}
             initial="hidden"
             whileInView="visible"
-            viewport={{
-              once: true,
-              amount: 0.4,
-            }}
-            className="flex items-start gap-3 pt-2"
+            viewport={{ once: true }}
+            className="mb-5 flex items-center justify-center gap-5"
           >
-            <motion.span
-              initial={{
-                height: 0,
-              }}
-              whileInView={{
-                height: 20,
-              }}
-              viewport={{
-                once: true,
-              }}
-              transition={{
-                duration: 0.7,
-                ease: easeInOut,
-              }}
-              className="mt-0.75 w-0.5 rounded-full bg-[#D4AF37]"
-            />
+            <span className="h-px w-14 bg-[#B99750]" />
 
-            <p className="font-[Poppins] text-[10px] font-semibold tracking-[0.16em] text-[#541215]/70 uppercase sm:text-[11px]">
+            <span className="font-[Poppins] text-[10px] font-medium tracking-[0.35em] text-[#333] sm:text-[11px]">
               KEY HIGHLIGHTS
-            </p>
+            </span>
+
+            <span className="h-px w-14 bg-[#B99750]" />
           </motion.div>
 
-          <div>
-            <motion.h2
-              variants={fadeUp}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{
-                once: true,
-                amount: 0.4,
-              }}
-              className="max-w-250 font-[Marcellus] text-[40px] leading-[1.08] tracking-[-0.015em] text-[#541215] sm:text-[48px] md:text-[52px]"
-            >
-              WHAT MAKES{"  "}
-              <span className="text-[#711717]">EMPEROR CITY SPECIAL</span>
-            </motion.h2>
+          <motion.h2
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="font-[Marcellus] text-[38px] leading-[1.08] tracking-[-0.02em] text-[#2B2B2B] sm:text-[48px] lg:text-[58px]"
+          >
+            WHAT MAKES{" "}
+            <span className="text-[#711717]">EMPEROR CITY SPECIAL</span>
+          </motion.h2>
 
+          <motion.p
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="mx-auto mt-5 max-w-190 font-[Poppins] text-[13px] leading-[1.7] text-[#444] sm:text-[15px]"
+          >
+            More than a plotted development — a thoughtfully planned township
+            designed for living, investing and growing.
+          </motion.p>
+        </div>
+
+        <div className="relative mt-12 sm:mt-14 lg:mt-16">
+          <button
+            type="button"
+            onClick={previous}
+            aria-label="Previous highlights"
+            className="absolute top-1/2 left-0 z-30 hidden h-12 w-12 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-[#B99750]/40 bg-white text-[#541215] shadow-[0_8px_25px_rgba(43,9,11,0.10)] transition-all duration-300 hover:bg-[#541215] hover:text-white lg:flex"
+          >
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.8"
+            >
+              <path d="M15 18L9 12L15 6" />
+            </svg>
+          </button>
+
+          <button
+            type="button"
+            onClick={next}
+            aria-label="Next highlights"
+            className="absolute top-1/2 right-0 z-30 hidden h-12 w-12 translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-[#B99750]/40 bg-white text-[#541215] shadow-[0_8px_25px_rgba(43,9,11,0.10)] transition-all duration-300 hover:bg-[#541215] hover:text-white lg:flex"
+          >
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.8"
+            >
+              <path d="M9 18L15 12L9 6" />
+            </svg>
+          </button>
+
+          <div className="overflow-hidden px-1 py-3">
             <motion.div
-              initial={{
-                opacity: 0,
-                x: -20,
-              }}
-              whileInView={{
-                opacity: 1,
-                x: 0,
-              }}
-              viewport={{
-                once: true,
+              className="flex"
+              animate={{
+                x: `-${current * (100 / visibleCards)}%`,
               }}
               transition={{
-                duration: 0.8,
-                delay: 0.25,
+                duration: 0.65,
                 ease: easeInOut,
               }}
-              className="mt-5 flex items-center gap-3"
             >
-              <motion.span
-                initial={{
-                  width: 0,
-                }}
-                whileInView={{
-                  width: 48,
-                }}
-                viewport={{
-                  once: true,
-                }}
-                transition={{
-                  duration: 0.7,
-                  delay: 0.35,
-                  ease: easeInOut,
-                }}
-                className="h-px bg-[#D4AF37]"
-              />
+              {highlights.map((highlight, index) => (
+                <div
+                  key={highlight.number}
+                  className="w-full shrink-0 px-2 md:w-1/3 md:px-3"
+                >
+                  <motion.article
+                    initial={{
+                      opacity: 0,
+                      y: 25,
+                    }}
+                    whileInView={{
+                      opacity: 1,
+                      y: 0,
+                    }}
+                    viewport={{
+                      once: true,
+                      amount: 0.15,
+                    }}
+                    transition={{
+                      duration: 0.6,
+                      delay: (index % 3) * 0.08,
+                    }}
+                    className="group relative flex min-h-140 flex-col overflow-hidden rounded-[18px] border border-[#541215]/[0.07] bg-white shadow-[0_12px_40px_rgba(43,9,11,0.06)]"
+                  >
+                    <div className="relative px-6 pt-7 sm:px-7 lg:px-9 lg:pt-8">
+                      <div className="font-[Marcellus] text-[64px] leading-none text-[#C7A35D] sm:text-[70px]">
+                        {highlight.number}
+                      </div>
 
-              <motion.span
-                initial={{
-                  opacity: 0,
-                  scale: 0,
-                }}
-                whileInView={{
-                  opacity: 1,
-                  scale: 1,
-                }}
-                viewport={{
-                  once: true,
-                }}
-                transition={{
-                  duration: 0.5,
-                  delay: 0.7,
-                  ease: easeInOut,
-                }}
-                className="h-1.5 w-1.5 rounded-full bg-[#D4AF37]"
-              />
+                      <div className="absolute top-6 right-6 flex h-17.5 w-17.5 items-center justify-center rounded-full bg-[#FBF7ED] sm:top-7 sm:right-7 lg:top-8 lg:right-9">
+                        <Image
+                          src={highlight.icon}
+                          alt=""
+                          width={38}
+                          height={38}
+                          className="h-9 w-9 object-contain"
+                        />
+                      </div>
+
+                      <div className="mt-5">
+                        <h3 className="max-w-[320px] font-[Marcellus] text-[24px] leading-[1.15] text-[#541215] sm:text-[26px] lg:text-[28px]">
+                          {highlight.title}
+                        </h3>
+
+                        <span className="mt-5 block h-0.5 w-12 bg-[#B99750]" />
+                      </div>
+
+                      <p className="mt-5 max-w-97.5 font-[Poppins] text-[13px] leading-[1.7] text-[#555] sm:text-[14px]">
+                        {highlight.description}
+                      </p>
+                    </div>
+
+                    <div className="mt-auto px-5 pt-2 pb-5 sm:px-6 sm:pb-6">
+                      <div className="relative h-47.5 overflow-hidden rounded-xl sm:h-51.25 lg:h-55">
+                        <Image
+                          src={highlight.image}
+                          alt={highlight.title}
+                          fill
+                          sizes="
+                            (max-width: 767px) 90vw,
+                            (max-width: 1279px) 30vw,
+                            420px
+                          "
+                          className="object-cover transition-transform duration-700 group-hover:scale-[1.05]"
+                        />
+
+                        <div className="absolute inset-0 bg-linear-to-t from-[#2B090B]/25 to-transparent" />
+                      </div>
+                    </div>
+                  </motion.article>
+                </div>
+              ))}
             </motion.div>
           </div>
+
+          <div className="mt-6 flex items-center justify-center gap-4 lg:hidden">
+            <button
+              type="button"
+              onClick={previous}
+              aria-label="Previous"
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-[#B99750]/40 bg-white text-[#541215]"
+            >
+              <svg
+                width="17"
+                height="17"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.8"
+              >
+                <path d="M15 18L9 12L15 6" />
+              </svg>
+            </button>
+
+            <div className="flex gap-2">
+              {Array.from({
+                length: maxIndex + 1,
+              }).map((_, index) => (
+                <button
+                  key={index}
+                  type="button"
+                  onClick={() => setCurrent(index)}
+                  aria-label={`Go to slide ${index + 1}`}
+                  className={`h-1.5 rounded-full transition-all duration-300 ${
+                    current === index
+                      ? "w-7 bg-[#541215]"
+                      : "w-1.5 bg-[#B99750]/50"
+                  } `}
+                />
+              ))}
+            </div>
+
+            <button
+              type="button"
+              onClick={next}
+              aria-label="Next"
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-[#B99750]/40 bg-white text-[#541215]"
+            >
+              <svg
+                width="17"
+                height="17"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.8"
+              >
+                <path d="M9 18L15 12L9 6" />
+              </svg>
+            </button>
+          </div>
         </div>
-
-<div className="mt-12 md:mt-16">
-  <motion.div
-    initial={{
-      opacity: 0,
-      y: 30,
-    }}
-    whileInView={{
-      opacity: 1,
-      y: 0,
-    }}
-    viewport={{
-      once: true,
-      amount: 0.2,
-    }}
-    transition={{
-      duration: 0.9,
-      ease: easeInOut,
-    }}
-    className="overflow-hidden rounded-[18px] border border-[#541215]/8 bg-white/80 shadow-[0_12px_40px_rgba(43,9,11,0.05)]"
-  >
-    {highlights.map((highlight, index) => (
-      <motion.div
-        key={highlight.number}
-        initial={{
-          opacity: 0,
-          y: 25,
-        }}
-        whileInView={{
-          opacity: 1,
-          y: 0,
-        }}
-        viewport={{
-          once: true,
-          amount: 0.15,
-        }}
-        transition={{
-          duration: 0.65,
-          delay: index * 0.08,
-          ease: easeInOut,
-        }}
-        whileHover={{
-          backgroundColor: "rgba(84,18,21,0.025)",
-        }}
-        className="group grid grid-cols-[42px_1fr] gap-3 border-b border-[#541215]/8 px-4 py-5 last:border-b-0 sm:grid-cols-[50px_1fr] sm:gap-4 sm:px-5 sm:py-6 md:grid-cols-[60px_260px_1fr] md:gap-5 md:px-7 md:py-7"
-      >
-        {/* NUMBER */}
-        <motion.div
-          whileHover={{
-            scale: 1.08,
-          }}
-          transition={{
-            duration: 0.3,
-            ease: easeInOut,
-          }}
-          className="flex items-start"
-        >
-          <span className="font-[Marcellus] text-[18px] text-[#D4AF37] sm:text-[20px] md:text-[22px]">
-            {highlight.number}
-          </span>
-        </motion.div>
-
-        {/* TITLE */}
-        <div className="min-w-0">
-          <motion.h4
-            whileHover={{
-              x: 3,
-            }}
-            transition={{
-              duration: 0.4,
-              ease: easeInOut,
-            }}
-            className="font-[Poppins] text-[12px] leading-[1.45] font-semibold text-[#2B090B] sm:text-[13px] md:text-[14px] lg:text-[15px]"
-          >
-            {highlight.title}
-          </motion.h4>
-
-          {/* MOBILE DESCRIPTION */}
-          <p className="mt-2 font-[Poppins] text-[10px] leading-[1.7] font-normal text-[#777] sm:text-[11px] md:hidden">
-            {highlight.description}
-          </p>
-        </div>
-
-        {/* DESKTOP DESCRIPTION */}
-        <div className="hidden md:block">
-          <p className="font-[Poppins] text-[11px] leading-[1.75] font-normal text-[#777] lg:text-[12px]">
-            {highlight.description}
-          </p>
-        </div>
-      </motion.div>
-    ))}
-  </motion.div>
-</div>
-
       </div>
     </section>
   );
