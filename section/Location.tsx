@@ -150,7 +150,6 @@ export default function LocationConnectivity() {
           viewport={{ once: true, amount: 0.25 }}
           className="relative grid grid-cols-1 gap-10 border-b border-[#541215]/10 pb-12 md:gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:pb-14"
         >
-          {/* Heading */}
           <motion.div variants={headerVariants}>
             <div className="mb-5 flex items-center gap-3">
               <span className="h-px w-10 bg-[#D4AF37]" />

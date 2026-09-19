@@ -9,6 +9,7 @@ import Investment from "@/section/Investment";
 import LocationConnectivity from "@/section/Location";
 import Explore from "@/section/Explore";
 import TopReason from "@/section/Topreason";
+import PriceDetails from "@/section/configuration";
 
 export default function Home() {
   return (
@@ -28,6 +29,9 @@ export default function Home() {
       </section>
       <section id="amenities">
         <Amenities />
+      </section>
+      <section>
+        <PriceDetails />
       </section>
       <section id="explore">
         <Explore />
