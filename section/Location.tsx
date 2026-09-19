@@ -9,6 +9,8 @@ import {
   Building2,
 } from "lucide-react";
 import { motion } from "framer-motion";
+import Image from "next/image";
+import Link from "next/link";
 
 const locationCategories = [
   {
@@ -135,7 +137,7 @@ export default function LocationConnectivity() {
   return (
     <section
       id="location"
-      className="relative overflow-hidden bg-[#FBFAF7] py-20 sm:py-24 lg:py-28 xl:py-32"
+      className="relative overflow-hidden bg-[#FBFAF7] py-20 md:py-20"
     >
       <div className="pointer-events-none absolute -top-32 -right-32 h-130 w-130 rounded-full bg-[#D4AF37]/5.5 blur-[150px]" />
 
@@ -146,8 +148,9 @@ export default function LocationConnectivity() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.25 }}
-          className="relative grid grid-cols-1 gap-8 border-b border-[#541215]/10 pb-12 md:gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-end lg:pb-14"
+          className="relative grid grid-cols-1 gap-10 border-b border-[#541215]/10 pb-12 md:gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:pb-14"
         >
+          {/* Heading */}
           <motion.div variants={headerVariants}>
             <div className="mb-5 flex items-center gap-3">
               <span className="h-px w-10 bg-[#D4AF37]" />
@@ -164,33 +167,26 @@ export default function LocationConnectivity() {
             </h2>
           </motion.div>
 
-          <motion.div variants={contentVariants} className="relative lg:pb-1">
-            <div className="absolute top-1 -left-5 hidden h-full w-px bg-linear-to-b from-[#D4AF37] via-[#D4AF37]/40 to-transparent lg:block" />
-
-            <p className="max-w-130 font-[Poppins] text-[13px] leading-7 text-[#541215]/60 sm:text-[14px] sm:leading-8 lg:text-[15px]">
-              Located at{" "}
-              <span className="font-semibold text-[#711717]">
-                VM Chatram, Palayamkottai Taluk, Tirunelveli District - 627011
-              </span>
-              , Emperor City keeps you connected to key parts of Tirunelveli
-              while offering the advantage of a developing location.
-            </p>
-
-            <div className="mt-6 flex items-center gap-3">
-              <div className="flex h-9 w-9 items-center justify-center rounded-full border border-[#D4AF37]/40 bg-white text-[#711717] shadow-[0_6px_20px_rgba(84,18,21,0.06)]">
-                <MapPin size={16} strokeWidth={1.5} />
-              </div>
-
-              <div>
-                <p className="font-[Poppins] text-[8px] font-semibold tracking-[0.2em] text-[#541215]/40 uppercase">
-                  Project Location
-                </p>
-
-                <p className="mt-0.5 font-[Poppins] text-[11px] font-medium text-[#541215]">
-                  VM Chatram · Palayamkottai
-                </p>
-              </div>
-            </div>
+          <motion.div
+            variants={contentVariants}
+            className="relative w-full overflow-hidden rounded-2xl border border-[#D4AF37]/30 bg-white p-2 shadow-[0_10px_30px_rgba(84,18,21,0.08)]"
+          >
+            <a
+              href="https://maps.app.goo.gl/wonqyDCv2PdnfWuf9"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group block cursor-pointer"
+            >
+              <Image
+                src="/images/map.webp"
+                alt="Emperor City project location map"
+                width={1200}
+                height={800}
+                priority
+                sizes="(max-width: 1024px) 100vw, 55vw"
+                className="h-auto w-full rounded-xl object-contain transition-transform duration-500 group-hover:scale-[1.02]"
+              />
+            </a>
           </motion.div>
         </motion.div>
         <motion.div
@@ -209,7 +205,6 @@ export default function LocationConnectivity() {
                 variants={cardVariants}
                 className="group relative"
               >
-                {/* Heading */}
                 <div className="flex items-center gap-3">
                   <div className="flex h-12 w-12 shrink-0 items-center justify-center text-[#711717] sm:h-14 sm:w-14">
                     <Icon
@@ -223,10 +218,8 @@ export default function LocationConnectivity() {
                   </h3>
                 </div>
 
-                {/* Gold divider */}
                 <div className="mt-4 h-px w-12 bg-[#D4AF37] transition-all duration-500 group-hover:w-20" />
 
-                {/* Details */}
                 <ul className="mt-5 space-y-3.5">
                   {category.items.map((item, index) => (
                     <li
