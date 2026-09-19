@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { sendGoogleLeadToSheet } from "@/lib/googlesheet";
+import { sendGoogleLeadMail } from "@/lib/mail";
 
 export async function POST(req: NextRequest) {
   try {
@@ -57,31 +57,35 @@ export async function POST(req: NextRequest) {
       projectName = "Emperor City_gad";
     }
 
-    const sheetResponse = await sendGoogleLeadToSheet({
+    const mailResponse = await sendGoogleLeadMail({
       name,
       phone,
       email: email || "",
-      formType: formtype,
+      formType: formtype || "Enquiry Form",
       projectName,
-      leadSource,
-      agree: agree ? "Yes" : "No",
+      leadSource: leadSource || "direct",
+      agree: Boolean(agree),
     });
 
-    console.log("Sheet Response:", sheetResponse);
+    console.log("Mail Response:", mailResponse);
+
+    if (!mailResponse.success) {
+      return NextResponse.json(
+        {
+          success: false,
+          message: "Failed to send lead.",
+          error: mailResponse.error,
+        },
+        { status: 500 },
+      );
+    }
 
     return NextResponse.json(
       {
-        success: sheetResponse.success,
-
-        message: sheetResponse.success
-          ? "Lead submitted successfully."
-          : "One or more integrations failed.",
-
-        sheet: sheetResponse,
+        success: true,
+        message: "Lead submitted successfully.",
       },
-      {
-        status: sheetResponse.success ? 200 : 500,
-      },
+      { status: 200 },
     );
   } catch (error) {
     console.error("Lead API Error:", error);
