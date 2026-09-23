@@ -10,6 +10,14 @@ export const amenities = [
     icon: "/images/amenities/2.svg",
   },
   {
+    title: "Divine Panchatattva Walking Track",
+    icon: "/images/amenities/9.svg",
+  },
+  {
+    title: "Kids Jungle Park",
+    icon: "/images/amenities/10.svg",
+  },
+  {
     title: "Blacktop Roads",
     icon: "/images/amenities/3.svg",
   },
@@ -32,13 +40,5 @@ export const amenities = [
   {
     title: "Avenue Trees",
     icon: "/images/amenities/8.svg",
-  },
-  {
-    title: "Divine Panchatattva Walking Track",
-    icon: "/images/amenities/9.svg",
-  },
-  {
-    title: "Kids Jungle Park",
-    icon: "/images/amenities/10.svg",
   },
 ];
