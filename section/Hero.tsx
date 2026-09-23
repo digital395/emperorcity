@@ -82,25 +82,25 @@ export default function Hero() {
       />
 
       <div className="absolute inset-0">
-        <div className="absolute top-0 left-0 h-[55%] w-[42%] bg-linear-to-r from-white/95 via-white/70 to-transparent mask-[radial-gradient(ellipse_at_top_left,black_0%,black_45%,transparent_80%)] blur-[2px] [-webkit-mask-image:radial-gradient(ellipse_at_top_left,black_0%,black_45%,transparent_80%)]" />
+        <div className="absolute top-0 left-0 h-[55%] w-[52%] bg-linear-to-r from-white/95 via-white/70 to-transparent mask-[radial-gradient(ellipse_at_top_left,black_0%,black_45%,transparent_80%)] blur-[2px] [-webkit-mask-image:radial-gradient(ellipse_at_top_left,black_0%,black_45%,transparent_80%)]" />
 
         <div className="relative mx-auto flex h-full w-full max-w-[1567px] items-start px-5 pt-24 sm:px-8 sm:pt-28 md:px-12 md:pt-32 lg:px-16 lg:pt-36 xl:px-20">
           <motion.div
             variants={containerVariants}
             initial="hidden"
             animate="visible"
-            className="hidden w-full max-w-162.5 md:block"
+            className="hidden w-full max-w-162.5 ml-[-10] md:block"
           >
             <motion.h1
               variants={itemVariants}
-              className="bg-linear-to-r from-[#7A1A15] to-[#541215] bg-clip-text font-[Poppins] text-[23px] leading-[1.12] font-extrabold tracking-[-0.02em] text-transparent uppercase sm:text-[30px] md:text-[36px] lg:text-[46px] lg:whitespace-nowrap xl:text-[52px]"
+              className="bg-linear-to-r from-[#7A1A15] to-[#541215] bg-clip-text font-[Poppins] text-[23px] font-medium leading-[1.12] font-extrabold tracking-[-0.02em] text-transparent uppercase sm:text-[30px] md:text-[36px] lg:whitespace-nowrap"
             >
               Your Dream Plot Starts Here
             </motion.h1>
 
             <motion.p
               variants={itemVariants}
-              className="mt-3 bg-linear-to-r from-[#7A1A15] to-[#541215] bg-clip-text font-[Poppins] text-[17px] leading-tight font-medium text-transparent sm:mt-4 sm:text-[21px] md:text-[25px] lg:text-[32px]"
+              className="mt-3 bg-linear-to-r from-[#7A1A15] to-[#541215] bg-clip-text font-[Poppins] text-[17px] leading-tight font-medium text-transparent sm:mt-4 sm:text-[21px] md:text-[25px] "
             >
               Premium plots with clubhouse
             </motion.p>
