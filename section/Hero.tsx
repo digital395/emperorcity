@@ -1,9 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import { ShieldCheck, MapPinned, Handshake } from "lucide-react";
+// import { ShieldCheck, MapPinned, Handshake } from "lucide-react";
 import { motion } from "framer-motion";
-import EnquiryForm from "@/components/enquiryform";
+// import EnquiryForm from "@/components/enquiryform";
 
 export default function Hero() {
   const ease = [0.22, 1, 0.36, 1] as const;
@@ -93,7 +93,7 @@ export default function Hero() {
           >
             <motion.h1
               variants={itemVariants}
-              className="bg-linear-to-r from-[#7A1A15] to-[#541215] bg-clip-text font-[Poppins] text-[23px] font-medium leading-[1.12] font-extrabold tracking-[-0.02em] text-transparent uppercase sm:text-[30px] md:text-[36px] lg:whitespace-nowrap"
+              className="bg-linear-to-r from-[#7A1A15] to-[#541215] bg-clip-text font-[Poppins] text-[23px] font-medium leading-[1.12] tracking-[-0.02em] text-transparent uppercase sm:text-[30px] md:text-[36px] lg:whitespace-nowrap"
             >
               Your Dream Plot Starts Here
             </motion.h1>
