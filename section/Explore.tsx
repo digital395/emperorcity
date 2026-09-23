@@ -152,7 +152,7 @@ export default function SpaceForMore() {
               {imageOpen && leadValid && (
                 <div
                   onClick={() => setImageOpen(false)}
-                  className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/90 p-4 sm:p-6"
+                  className="fixed inset-0 z-9999 flex items-center justify-center bg-black/90 p-4 sm:p-6"
                 >
                   <div
                     className="relative max-h-[95vh] max-w-[95vw]"
