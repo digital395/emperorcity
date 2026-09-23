@@ -36,100 +36,62 @@ const itemVariants = {
   }),
 };
 
-function AmenityRow({ items }: { items: typeof amenities }) {
+function AmenityGrid({ items }: { items: typeof amenities }) {
   return (
     <motion.div
-      variants={rowVariants}
       initial="hidden"
       whileInView="visible"
       viewport={{
         once: true,
-        amount: 0.25,
+        amount: 0.15,
       }}
-      className="grid w-full grid-cols-2 overflow-hidden rounded-2xl border border-[#541215]/8 bg-[#FBFAF7]/70 px-1 py-1 shadow-[0_8px_30px_rgba(43,9,11,0.035)] sm:px-2 sm:py-2 lg:flex lg:items-center lg:justify-center"
+      variants={{
+        hidden: {},
+        visible: {
+          transition: {
+            staggerChildren: 0.08,
+          },
+        },
+      }}
+      className="w-full"
     >
-      {items.map((amenity, index) => {
-        const Icon = amenity.icon;
-
-        return (
+      <div className="grid grid-cols-2 gap-x-4 gap-y-12 sm:grid-cols-3 sm:gap-x-6 sm:gap-y-16 lg:grid-cols-5 lg:gap-x-8 lg:gap-y-20 xl:gap-x-10">
+        {items.map((amenity) => (
           <motion.div
             key={amenity.title}
-            custom={index}
-            variants={itemVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{
-              once: true,
-              amount: 0.4,
+            variants={{
+              hidden: {
+                opacity: 0,
+                y: 25,
+              },
+              visible: {
+                opacity: 1,
+                y: 0,
+                transition: {
+                  duration: 0.7,
+                  ease: easeInOut,
+                },
+              },
             }}
-            className="group flex min-h-18 items-center border-b border-[#541215]/8 px-2 py-2 last:border-b-0 sm:min-h-19 sm:px-3 lg:h-16 lg:min-h-0 lg:flex-1 lg:border-b-0 lg:px-0 lg:py-0"
+            whileHover={{
+              y: -4,
+            }}
+            className="group flex flex-col items-center text-center"
           >
-            <motion.div
-              whileHover={{
-                x: 5,
-              }}
-              transition={{
-                duration: 0.5,
-                ease: easeInOut,
-              }}
-              className="flex w-full items-center gap-2.5 px-2 sm:gap-3 sm:px-3 lg:gap-4 lg:px-5 xl:px-7"
-            >
-              <motion.div
-                whileHover={{
-                  scale: 1.12,
-                  rotate: -4,
-                }}
-                transition={{
-                  duration: 0.5,
-                  ease: easeInOut,
-                }}
-                className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[#D4AF37]/30 bg-[#541215]/4 text-[#541215] sm:h-10 sm:w-10"
-              >
-                <Icon
-                  size={17}
-                  strokeWidth={1.7}
-                  className="sm:h-4.75 sm:w-4.75"
-                />
-              </motion.div>
-
-              <motion.span
-                whileHover={{
-                  color: "#541215",
-                }}
-                transition={{
-                  duration: 0.4,
-                  ease: easeInOut,
-                }}
-                className="font-[Poppins] text-[11px] leading-4 font-medium tracking-[0.01em] whitespace-normal text-[#252525] sm:text-[12px] lg:text-[14px] lg:whitespace-nowrap"
-              >
-                {amenity.title}
-              </motion.span>
-            </motion.div>
-
-            {index !== items.length - 1 && (
-              <motion.div
-                initial={{
-                  opacity: 0,
-                  scaleY: 0.5,
-                }}
-                whileInView={{
-                  opacity: 1,
-                  scaleY: 1,
-                }}
-                viewport={{
-                  once: true,
-                }}
-                transition={{
-                  duration: 0.8,
-                  delay: index * 0.08,
-                  ease: easeInOut,
-                }}
-                className="hidden h-9.5 w-px shrink-0 bg-[#541215]/10 lg:block"
+            <div className="flex h-25 w-25 items-center justify-center transition-transform duration-500 group-hover:scale-105 sm:h-28.75 sm:w-28.75 lg:h-31.25 lg:w-31.25">
+              <img
+                src={amenity.icon}
+                alt=""
+                className="h-full w-full object-contain"
               />
-            )}
+            </div>
+
+            <h3 className="mt-5 max-w-45 font-[Marcellus] text-[17px] leading-[1.3] text-[#541215] transition-colors duration-300 group-hover:text-[#711717] sm:mt-6 sm:text-[19px] lg:text-[20px]">
+              {amenity.title}
+            </h3>
           </motion.div>
-        );
-      })}
+        ))}
+      </div>
     </motion.div>
   );
 }
@@ -311,9 +273,8 @@ export default function ProjectAmenities() {
           </div>
         </div>
 
-        <div className="mt-14 space-y-5 lg:mt-16">
-          <AmenityRow items={amenities.slice(0, 4)} />
-          <AmenityRow items={amenities.slice(4, 8)} />
+        <div className="mt-14 lg:mt-16">
+          <AmenityGrid items={amenities} />
         </div>
       </div>
     </section>

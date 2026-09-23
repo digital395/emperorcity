@@ -1,47 +1,44 @@
 "use client";
 
-import {
-  Route,
-  Waves,
-  LockKeyhole,
-  ShieldCheck,
-  Lightbulb,
-  Droplets,
-  Trees,
-  Building2,
-} from "lucide-react";
-
 export const amenities = [
   {
     title: "Grand Clubhouse",
-    icon: Building2,
+    icon: "/images/amenities/1.svg",
   },
   {
     title: "Swimming Pool",
-    icon: Waves,
+    icon: "/images/amenities/2.svg",
   },
   {
     title: "Blacktop Roads",
-    icon: Route,
+    icon: "/images/amenities/3.svg",
   },
   {
     title: "Gated Community",
-    icon: LockKeyhole,
+    icon: "/images/amenities/4.svg",
   },
   {
     title: "24/7 Security",
-    icon: ShieldCheck,
+    icon: "/images/amenities/5.svg",
   },
   {
     title: "Solar Street Lights",
-    icon: Lightbulb,
+    icon: "/images/amenities/6.svg",
   },
   {
     title: "Quality Ground Water",
-    icon: Droplets,
+    icon: "/images/amenities/7.svg",
   },
   {
     title: "Avenue Trees",
-    icon: Trees,
+    icon: "/images/amenities/8.svg",
+  },
+  {
+    title: "Divine Panchatattva Walking Track",
+    icon: "/images/amenities/9.svg",
+  },
+  {
+    title: "Kids Jungle Park",
+    icon: "/images/amenities/10.svg",
   },
 ];
