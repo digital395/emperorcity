@@ -16,7 +16,7 @@ export default function SpaceForMore() {
   const [formType, setFormType] = useState("Explore Emperor City");
   const [leadValid, setLeadValid] = useState(false);
   const [activePhase, setActivePhase] = useState(0);
-
+  const [imageOpen, setImageOpen] = useState(false);
   const phases = [
     {
       name: "Phase 1",
@@ -99,46 +99,86 @@ export default function SpaceForMore() {
                   }}
                   className="relative"
                 >
-                  <Image
-                    src={phases[activePhase].image}
-                    alt={phases[activePhase].alt}
-                    width={900}
-                    height={900}
-                    priority
-                    sizes="(max-width: 768px) 100vw, 45vw"
-                    className={`h-auto w-full object-cover transition-all duration-700 ${
-                      leadValid ? "blur-0 scale-100" : "scale-105 blur-md"
-                    }`}
-                  />
+                  <button
+                    type="button"
+                    onClick={() => {
+                      if (leadValid) {
+                        setImageOpen(true);
+                      } else {
+                        openExploreForm();
+                      }
+                    }}
+                    className="group block w-full"
+                  >
+                    <Image
+                      src={phases[activePhase].image}
+                      alt={phases[activePhase].alt}
+                      width={900}
+                      height={900}
+                      priority
+                      sizes="(max-width: 768px) 100vw, 45vw"
+                      className={`h-auto w-full object-cover transition-all duration-700 ${
+                        leadValid
+                          ? "blur-0 scale-100 group-hover:scale-[1.02]"
+                          : "scale-105 blur-md"
+                      }`}
+                    />
 
-                  {/* Locked overlay */}
-                  {!leadValid && (
-                    <div className="absolute inset-0 flex items-center justify-center bg-[#541215]/45 backdrop-blur-[1px]">
-                      <motion.button
-                        type="button"
-                        onClick={openExploreForm}
-                        initial={{ opacity: 0, y: 15 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{
-                          duration: 0.6,
-                          ease,
-                        }}
-                        className="group flex h-12 items-center justify-center gap-2 rounded-xl border border-[#D4AF37]/70 bg-[#F1D77A] px-6 font-[Poppins] text-[10px] font-semibold tracking-[0.12em] text-[#541215] uppercase shadow-[0_12px_35px_rgba(0,0,0,0.3)] transition-all duration-300 hover:-translate-y-1 hover:bg-white hover:shadow-[0_16px_40px_rgba(212,175,55,0.25)] sm:h-13 sm:px-8 sm:text-[11px]"
-                      >
-                        Explore Emperor City
-                        <span className="text-[15px] transition-transform duration-300 group-hover:translate-x-1">
-                          →
-                        </span>
-                      </motion.button>
-                    </div>
-                  )}
+                    {/* Locked overlay */}
+                    {!leadValid && (
+                      <div className="absolute inset-0 flex items-center justify-center bg-[#541215]/45 backdrop-blur-[1px]">
+                        <motion.div
+                          initial={{ opacity: 0, y: 15 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{
+                            duration: 0.6,
+                            ease,
+                          }}
+                          className="rounded-xl border border-[#D4AF37]/70 bg-[#F1D77A] px-6 py-3 font-[Poppins] text-[10px] font-semibold tracking-[0.12em] text-[#541215] uppercase shadow-[0_12px_35px_rgba(0,0,0,0.3)] sm:px-8 sm:text-[11px]"
+                        >
+                          Explore Emperor City
+                          <span className="ml-2">→</span>
+                        </motion.div>
+                      </div>
+                    )}
 
-                  {/* Valid image overlay */}
-                  {leadValid && (
-                    <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-[#541215]/20 via-transparent to-transparent" />
-                  )}
+                    {/* Unlocked hover indication */}
+                    {leadValid && (
+                      <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-[#541215]/20 via-transparent to-transparent" />
+                    )}
+                  </button>
                 </motion.div>
               </div>
+              {imageOpen && leadValid && (
+                <div
+                  onClick={() => setImageOpen(false)}
+                  className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/90 p-4 sm:p-6"
+                >
+                  <div
+                    className="relative max-h-[95vh] max-w-[95vw]"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    {/* Close button */}
+                    <button
+                      type="button"
+                      onClick={() => setImageOpen(false)}
+                      className="absolute -top-3 -right-3 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-white text-2xl text-[#541215] shadow-lg transition-all hover:scale-105"
+                      aria-label="Close"
+                    >
+                      ×
+                    </button>
+
+                    <Image
+                      src={phases[activePhase].image}
+                      alt={phases[activePhase].alt}
+                      width={1800}
+                      height={1800}
+                      sizes="95vw"
+                      className="max-h-[95vh] w-auto rounded-lg object-contain"
+                    />
+                  </div>
+                </div>
+              )}
 
               {/* Carousel dots */}
               <div className="mt-4 flex items-center justify-center gap-2">
