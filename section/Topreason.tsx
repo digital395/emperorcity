@@ -193,16 +193,16 @@ export default function TopReason() {
                     className="group relative flex min-h-140 flex-col overflow-hidden rounded-[18px] border border-[#541215]/[0.07] bg-white shadow-[0_12px_40px_rgba(43,9,11,0.06)]"
                   >
                     <div className="relative px-6 pt-7 sm:px-7 lg:px-9 lg:pt-8">
-                      <div className="font-[Marcellus] text-[64px] leading-none text-[#C7A35D] sm:text-[70px]">
+                      <div className="font-[Marcellus] text-[40px] leading-none text-[#C7A35D] md:text-[45px]">
                         {highlight.number}
                       </div>
 
-                      <div className="absolute top-6 right-6 flex h-17.5 w-17.5 items-center justify-center rounded-full bg-[#FBF7ED] sm:top-7 sm:right-7 lg:top-8 lg:right-9">
+                      <div className="absolute top-6 right-6 flex h-15 w-15 items-center justify-center rounded-full bg-[#FBF7ED] sm:top-7 sm:right-7 lg:top-8 lg:right-9">
                         <Image
                           src={highlight.icon}
                           alt=""
-                          width={38}
-                          height={38}
+                          width={30}
+                          height={30}
                           className="h-9 w-9 object-contain"
                         />
                       </div>

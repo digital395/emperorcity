@@ -48,7 +48,7 @@ export const highlights = [
     number: "06",
     title: "Unmatched NH-44 Connectivity",
     description:
-      "Just 1 minute from NH-44 (Chennai–Kanyakumari Highway), with ongoing widening works improving access to Madurai, Trichy, and Chennai. Add to that 5 minutes to Shantinagar & Palayamkottai bus stands, 8 minutes to Melapalayam Railway Station, and 20 minutes to the airport — few projects in Tirunelveli match this connectivity profile.",
+      "Just 1 minute from NH-44 (Chennai–Kanyakumari Highway), add to that 5 minutes to Shantinagar & Palayamkottai bus stands, 8 minutes to Melapalayam Railway Station, and 20 minutes to the airport.",
     icon: "/images/highlights/icons/6.svg",
     image: "/images/highlights/images/6.webp",
   },
