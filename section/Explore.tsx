@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 import Popup from "@/components/popup";
 import EnquiryForm from "@/components/enquiryform";
 
@@ -29,35 +28,34 @@ export default function SpaceForMore() {
       alt: "Emperor City Phase 2 Master Plan",
     },
   ];
-
+  const [selectedPhase, setSelectedPhase] = useState(0);
   useEffect(() => {
     setLeadValid(isLeadValid());
   }, []);
 
-  const openExploreForm = () => {
-    setFormType("Explore Emperor City");
+  const openExploreForm = (phaseIndex: number) => {
+    setSelectedPhase(phaseIndex);
+    setFormType(`Explore Emperor City - ${phases[phaseIndex].name}`);
     setOpen(true);
   };
 
-  // Call this after successful form submission
   const handleFormSuccess = () => {
     saveLeadVerification();
     setLeadValid(true);
     setOpen(false);
+    setActivePhase(selectedPhase);
+    setImageOpen(true);
   };
 
   return (
     <>
       <section className="relative w-full overflow-hidden bg-[#541215]">
-        {/* Background accents */}
         <div className="pointer-events-none absolute top-1/2 -left-32 h-105 w-105 -translate-y-1/2 rounded-full bg-[#D4AF37]/[0.07] blur-[110px]" />
 
         <div className="pointer-events-none absolute top-0 -right-40 h-125 w-125 rounded-full bg-[#F1D77A]/[0.035] blur-[130px]" />
 
         <div className="relative mx-auto w-full max-w-full px-5 py-10 sm:px-7 sm:py-12 md:px-8 md:py-14 lg:px-10 lg:py-16">
           <div className="grid items-center gap-8 md:grid-cols-[1.05fr_1.35fr] md:gap-10 lg:grid-cols-[1.1fr_1.3fr] lg:gap-14">
-            {/* IMAGE */}
-            {/* IMAGE / PHASE CAROUSEL */}
             <motion.div
               initial={{ opacity: 0, x: -35 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -105,7 +103,7 @@ export default function SpaceForMore() {
                       if (leadValid) {
                         setImageOpen(true);
                       } else {
-                        openExploreForm();
+                        openExploreForm(activePhase);
                       }
                     }}
                     className="group block w-full"
@@ -124,7 +122,6 @@ export default function SpaceForMore() {
                       }`}
                     />
 
-                    {/* Locked overlay */}
                     {!leadValid && (
                       <div className="absolute inset-0 flex items-center justify-center bg-[#541215]/45 backdrop-blur-[1px]">
                         <motion.div
@@ -141,8 +138,6 @@ export default function SpaceForMore() {
                         </motion.div>
                       </div>
                     )}
-
-                    {/* Unlocked hover indication */}
                     {leadValid && (
                       <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-[#541215]/20 via-transparent to-transparent" />
                     )}
@@ -158,7 +153,6 @@ export default function SpaceForMore() {
                     className="relative max-h-[95vh] max-w-[95vw]"
                     onClick={(e) => e.stopPropagation()}
                   >
-                    {/* Close button */}
                     <button
                       type="button"
                       onClick={() => setImageOpen(false)}
@@ -180,7 +174,6 @@ export default function SpaceForMore() {
                 </div>
               )}
 
-              {/* Carousel dots */}
               <div className="mt-4 flex items-center justify-center gap-2">
                 {phases.map((phase, index) => (
                   <button
@@ -206,7 +199,6 @@ export default function SpaceForMore() {
               </div>
             </motion.div>
 
-            {/* CONTENT */}
             <motion.div
               initial={{ opacity: 0, x: 40 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -229,12 +221,12 @@ export default function SpaceForMore() {
         </div>
       </section>
 
-      {/* FORM POPUP */}
       <Popup isOpen={open} onClose={() => setOpen(false)} title="Enquiry Form">
         <EnquiryForm
           isDownload={false}
           formtype={formType}
           onSuccess={handleFormSuccess}
+          redirectToThankYou={false}
         />
       </Popup>
     </>
