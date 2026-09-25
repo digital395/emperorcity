@@ -112,10 +112,10 @@ const EnquiryForm: React.FC<EnquiryFormProps> = ({
     formData.email === "" || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email);
 
   const isFormValid =
-    formData.name.trim() !== "" &&
-    isPhoneValid &&
-    isEmailValid &&
-    formData.agree;
+  formData.name.trim() !== "" &&
+  isPhoneValid &&
+  isEmailValid &&
+  (variant === "bottom" || formData.agree);
 
   if (variant === "bottom") {
     return (

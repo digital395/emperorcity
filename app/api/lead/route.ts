@@ -7,6 +7,10 @@ export async function POST(req: NextRequest) {
 
     const { name, phone, email, agree, formtype, leadSource } = body;
 
+    // -----------------------------
+    // Validation
+    // -----------------------------
+
     if (!name || !phone) {
       return NextResponse.json(
         {
@@ -47,15 +51,21 @@ export async function POST(req: NextRequest) {
       );
     }
 
+    // -----------------------------
+    // Project Name
+    // -----------------------------
+
     let projectName = "Emperor City_gad";
 
     if (leadSource === "meta") {
       projectName = "Emperor City_meta";
     } else if (leadSource === "google") {
       projectName = "Emperor City_gad";
-    } else {
-      projectName = "Emperor City_gad";
     }
+
+    // -----------------------------
+    // Send Email
+    // -----------------------------
 
     const mailResponse = await sendGoogleLeadMail({
       name,
@@ -79,6 +89,59 @@ export async function POST(req: NextRequest) {
         { status: 500 },
       );
     }
+
+    const webformid = "2";
+    const moduletype = "Basic";
+    const company_name = "HAPPYHOMES";
+    const source = "Google";
+    const medium = "Website";
+    const rsoftProjectName = "Emperor City";
+    const description = "I need a Plot";
+    const location = "Tirunelveli";
+
+    const rsoftParams = new URLSearchParams({
+      webformid,
+      moduletype,
+      company_name,
+      name,
+      mobileno: phone,
+      email: email || "",
+      source,
+      medium,
+      projectname: rsoftProjectName,
+      description,
+      location,
+    });
+
+    const rsoftUrl = `https://www.thesalezrobot.com/public/api/WebformIntegration?${rsoftParams.toString()}`;
+
+    console.log("RSoft CRM URL:", rsoftUrl);
+
+    const rsoftResponse = await fetch(rsoftUrl, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+      },
+      cache: "no-store",
+    });
+
+    const rsoftResponseText = await rsoftResponse.text();
+
+    console.log("RSoft CRM Status:", rsoftResponse.status);
+    console.log("RSoft CRM Response:", rsoftResponseText);
+
+    if (!rsoftResponse.ok) {
+      return NextResponse.json(
+        {
+          success: false,
+          message: "Lead email sent, but RSoft CRM submission failed.",
+          crmStatus: rsoftResponse.status,
+          crmResponse: rsoftResponseText,
+        },
+        { status: 502 },
+      );
+    }
+
 
     return NextResponse.json(
       {
