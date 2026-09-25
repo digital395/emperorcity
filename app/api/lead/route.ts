@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { sendGoogleLeadMail } from "@/lib/mail";
+import { sendGoogleLeadToSheet } from "@/lib/googlesheet";
 
 export async function POST(req: NextRequest) {
   try {
@@ -89,7 +90,17 @@ export async function POST(req: NextRequest) {
         { status: 500 },
       );
     }
+    const sheetResponse = await sendGoogleLeadToSheet({
+      name,
+      phone,
+      email: email,
+      formType: formtype,
+      projectName,
+      leadSource: leadSource,
+      agree: agree,
+    });
 
+    console.log("Google Sheet Response:", sheetResponse);
     const webformid = "2";
     const moduletype = "Basic";
     const company_name = "HAPPYHOMES";
@@ -141,7 +152,6 @@ export async function POST(req: NextRequest) {
         { status: 502 },
       );
     }
-
 
     return NextResponse.json(
       {
