@@ -101,34 +101,27 @@ export async function POST(req: NextRequest) {
     });
 
     console.log("Google Sheet Response:", sheetResponse);
-    const webformid = "2";
-    const moduletype = "Basic";
-    const company_name = "HAPPYHOMES";
-    const source = "Google";
-    const medium = "Website";
-    const rsoftProjectName = "Emperor City";
-    const description = "I need a Plot";
-    const location = "Tirunelveli";
 
-    const rsoftParams = new URLSearchParams({
-      webformid,
-      moduletype,
-      company_name,
+    const source = "Google";
+    const pixProjectName = "Emperor City";
+
+
+    const webhookUrl =
+      "https://crm.pixapp.in/api/v1/webhooks/google-form?token=343cc527a42cf3a2675641235214e70b5623e7670270b8d548e02f0d398cfa26";
+
+    const webhookParams = new URLSearchParams({
       name,
-      mobileno: phone,
+      phone: phone,
       email: email || "",
-      source,
-      medium,
-      projectname: rsoftProjectName,
-      description,
-      location,
+      source:source,
+      projectname: pixProjectName,
     });
 
-    const rsoftUrl = `https://www.thesalezrobot.com/public/api/WebformIntegration?${rsoftParams.toString()}`;
+    const pixUrl = `${webhookUrl}&${webhookParams.toString()}`;
 
-    console.log("RSoft CRM URL:", rsoftUrl);
+    console.log("Pix CRM URL:", pixUrl);
 
-    const rsoftResponse = await fetch(rsoftUrl, {
+    const pixResponse = await fetch(pixUrl, {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -136,18 +129,18 @@ export async function POST(req: NextRequest) {
       cache: "no-store",
     });
 
-    const rsoftResponseText = await rsoftResponse.text();
+    const pixResponseText = await pixResponse.text();
 
-    console.log("RSoft CRM Status:", rsoftResponse.status);
-    console.log("RSoft CRM Response:", rsoftResponseText);
+    console.log("Pix CRM Status:", pixResponse.status);
+    console.log("Pix CRM Response:", pixResponseText);
 
-    if (!rsoftResponse.ok) {
+    if (!pixResponse.ok) {
       return NextResponse.json(
         {
           success: false,
-          message: "Lead email sent, but RSoft CRM submission failed.",
-          crmStatus: rsoftResponse.status,
-          crmResponse: rsoftResponseText,
+          message: "Lead email sent, but Pix CRM submission failed.",
+          crmStatus: pixResponse.status,
+          crmResponse: pixResponseText,
         },
         { status: 502 },
       );
