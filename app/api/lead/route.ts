@@ -105,9 +105,7 @@ export async function POST(req: NextRequest) {
     const source = "Google";
     const pixProjectName = "Emperor City";
 
-
-    const webhookUrl =
-      "https://crm.pixapp.in/api/v1/webhooks/google-form?token=343cc527a42cf3a2675641235214e70b5623e7670270b8d548e02f0d398cfa26";
+    const webhookUrl = process.env.PIX_WEBHOOK_URL;
 
     const webhookParams = new URLSearchParams({
       name,
